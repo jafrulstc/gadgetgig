@@ -1,0 +1,27 @@
+@media (max-width: 1024px) {
+  .responsive-ul {
+      font-size: 10px;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      gap: 5px;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      @apply bg-bg_black
+  }
+}
+
+
+  
+@media (min-width: 1024px) {
+    .responsive-ul {
+        font-size: 16px;
+        justify-content: space-between;
+        position: static;
+    }
+}

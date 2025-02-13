@@ -1,0 +1,32 @@
+.show-categories ul {
+    @apply invisible opacity-0 transition-all duration-200 ease-linear 
+        
+}
+
+.show-categories:hover ul {
+    @apply bg-green-500 visible opacity-100 
+        
+}
+
+.show-categories ul li {
+    padding: 10px 12px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.05);
+    @apply pt-2 px-3 transition-all duration-300 ease-linear
+
+}
+
+.show-categories ul li:hover {
+    background: #EDF2F6;
+    color: tomato;
+    box-shadow: inset 0 -2px 6px rgba(0, 0, 0, 0.1);
+
+}
+.show-categories .sub-categories ul{
+    @apply opacity-0 invisible transition-all duration-200 ease-linear
+
+}
+
+.show-categories .sub-categories:hover ul {
+    @apply opacity-100 visible
+}

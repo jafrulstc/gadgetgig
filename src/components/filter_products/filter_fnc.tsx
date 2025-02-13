@@ -1,4 +1,4 @@
-import type { FilterItemsType, ProductFieldType } from "~/components/products/filter_products";
+import type { FilterItemsType, ProductFieldType } from "~/components/filter_products/filter_products";
 
 const priceFilter = (products: ProductFieldType[], filterItems: FilterItemsType) => {
 

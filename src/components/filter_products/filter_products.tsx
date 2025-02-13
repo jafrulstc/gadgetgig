@@ -288,8 +288,8 @@
 
 
 import { component$, createContextId, useContextProvider, useSignal, useStore, useVisibleTask$ } from "@builder.io/qwik";
-import { FilterCreate, FilterMinMax, FilterSidebarCreate, FilterSidebarMinMax } from "~/components/products/filter_components";
-import ShowProducts from "~/components/products/show_products";
+import { FilterCreate, FilterMinMax, FilterSidebarCreate, FilterSidebarMinMax } from "~/components/filter_products/filter_components";
+import ShowProducts from "~/components/filter_products/show_products";
 
 import { HighToLow, lowToHigh } from "./filter_fnc";
 

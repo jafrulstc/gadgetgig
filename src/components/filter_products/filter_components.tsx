@@ -166,7 +166,7 @@ const FilterCreate = component$<FilterCreateProps>(({ title, itemList, signal, f
             {/* <!-- Filter section, show/hide based on section state. --> */}
             <div class={` pt-6 ${signal.value ? " visible opacity-100 block" : "invisible opacity-0 hidden"} `} id="filter-section-0">
                 <div class="flex px-1 py-3 overflow-hidden max-w-md mx-auto font-[sans-serif]">
-                    <input type="email" placeholder="Search..." class="w-full outline-none bg-transparent text-gray-600 text-sm" />
+                    <input type="text" placeholder="Search..." class="w-full outline-none bg-transparent text-gray-600 text-sm" />
                 </div>
                 <div class="space-y-4">
                     {

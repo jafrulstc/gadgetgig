@@ -1,0 +1,9 @@
+
+child to parent Data fransfer
+<ProductCategories onMessage$={ (msg) => menubarClk.value = msg } />
+const ProductCategories = component$((  { onMessage$ }: { onMessage$: (msg: boolean) => void } ) => {
+    <div    onClick$={() => {
+        menuClose.value = false;
+        onMessage$(menuClose.value);
+}} 
+

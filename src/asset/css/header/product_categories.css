@@ -1,0 +1,57 @@
+.show-categories ul {
+    @apply invisible opacity-0 transition-all duration-200 ease-linear
+    ssm:h-0 ssm:space-y-2
+        
+}
+
+.scrollable-container {
+    max-height: 100vh; /* Ensures the sidebar doesn’t exceed the viewport height */
+    overflow-y: auto; /* Enables vertical scrolling */
+    scroll-behavior: smooth; /* Smooth scrolling experience */
+}
+
+.show-categories:hover ul {
+    @apply visible opacity-100
+    ssm:h-fit 
+
+
+        
+}
+
+.show-categories:last-child ul {
+    left: -180px;
+}
+
+.show-categories ul li {
+    /* border-bottom: 1px solid rgba(0, 0, 0, 0.1); */
+    /* box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.05); */
+    @apply py-2 px-3 transition-all duration-300 ease-linear
+    text-co_gray_700
+    ssm:py-0 ssm:px-0
+
+}
+
+.show-categories ul li:hover {
+
+    box-shadow: inset 0 -2px 6px rgba(0, 0, 0, 0.1);
+
+    @apply bg-hov_white text-hoc_red_400 ssm:bg-hov_white
+
+}
+.show-categories .sub-categories ul{
+    @apply opacity-0 invisible transition-all duration-200 ease-linear
+    ssm:h-0
+
+}
+
+.show-categories .sub-categories:hover ul {
+    @apply opacity-100 visible
+    ssm:h-fit
+}
+
+.show-categories .sub-categories .testdiv:hover~ul{
+    @apply ssm:pt-3 ssm:pb-2 ssm:bg-hov_red_400
+}
+.show-categories .sub-categories ul li{
+    /* background-color: green; */
+}

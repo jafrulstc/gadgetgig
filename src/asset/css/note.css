@@ -1,0 +1,71 @@
+/* flyoon */
+
+/* styled.css */
+.btn {
+    display: inline-flex;
+    height: 2.375rem;
+    min-height: 2.375rem;
+    flex-shrink: 0;
+    cursor: pointer;
+    user-select: none;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 1rem;
+    line-height: 1.375rem;
+    font-weight: 500
+}
+
+.btn-primary {
+    --tw-text-opacity: 1;
+    color: var(--fallback-pc, oklch(var(--pc)/var(--tw-text-opacity, 1)));
+    outline-color: var(--fallback-p, oklch(var(--p)/0.3))
+}
+
+.btn-secondary {
+    --tw-text-opacity: 1;
+    color: var(--fallback-sc, oklch(var(--sc)/var(--tw-text-opacity, 1)));
+    outline-color: var(--fallback-s, oklch(var(--s)/0.3))
+}
+
+.btn-soft {
+    border-style: none;
+    background-color: var(--fallback-n, oklch(var(--n)/0.2));
+    --tw-text-opacity: 1;
+    color: var(--fallback-bc, oklch(var(--bc)/var(--tw-text-opacity, 1)));
+    --tw-shadow: 0 0 #0000;
+    --tw-shadow-colored: 0 0 #0000;
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-body {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    font-size: 1rem;
+    line-height: 1.375rem;
+    font-weight: 400;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 600;
+    --tw-text-opacity: 1;
+    color: var(--fallback-bc, oklch(var(--bc)/var(--tw-text-opacity, 1)));
+}
+
+.card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 0.75rem;
+}

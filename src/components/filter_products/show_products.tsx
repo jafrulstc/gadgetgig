@@ -1,8 +1,8 @@
 import { component$, $, useContext } from "@builder.io/qwik";
 import productImage from "~/asset/images/products/Galaxy_S22_Ultra_Red.webp";
 // import ProductCard from "~/components/products/product_card";
-import { filterProductsApi } from "~/components/products/filter_products";
-import type { ProductFieldType } from "~/components/products/filter_products";
+import { filterProductsApi } from "~/components/filter_products/filter_products";
+import type { ProductFieldType } from "~/components/filter_products/filter_products";
 
 const ShowProducts = component$(() => {
     const filteredData = useContext(filterProductsApi);

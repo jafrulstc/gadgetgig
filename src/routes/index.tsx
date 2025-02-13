@@ -1,11 +1,15 @@
 import { component$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
-import FilterProducts from "~/components/products/filter_products";
+import Footer from "~/components/footer/footer";
+import Header from "~/components/header/header";
+import Home from "~/components/home/home";
 
 export default component$(() => {
   return (
     <>
-    <FilterProducts />
+      <Header />
+      <Home />
+      <Footer />
     </>
   );
 });
