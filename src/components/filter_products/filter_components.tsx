@@ -131,29 +131,33 @@ const FilterSidebarMinMax = component$(() => {
 })
 
 const FilterCreate = component$<FilterCreateProps>(({ title, itemList, signal, filterItems }) => {
-    const isChecked = useSignal<boolean[]>(itemList.map(() => false));
+    const isChecked = useStore({checkBox: itemList.map( ()=> false ) });
     const filterProducts = useContext(filterProductsApi);
     const storeProducts = useContext(storeApi);
     const filterItemOptions = useContext(filterItemsApi);
+
+    const searchFilterItem = useStore({ items: itemList });
 
     return (
         <div class="border-b border-gray-200 py-6">
             <h3 class="-my-3 flow-root">
                 {/* <!-- Expand/collapse section button --> */}
-                <button type="button" class="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500" aria-controls="filter-section-0" aria-expanded="false">
+                <button type="button" class="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500" aria-controls="filter-section-0" aria-expanded="false"
+                    onClick$={() => signal.value = !signal.value}
+                >
                     <span class="font-medium text-gray-900">{title}</span>
                     <span class="ml-6 flex items-center">
                         {/* <!-- Expand icon, show/hide based on section open state. --> */}
                         <svg
                             class={` size-5 ${signal.value ? "hidden" : "block"} `} viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon"
-                            onClick$={() => signal.value = true}
+                        // onClick$={() => signal.value = true}
                         >
                             <path d="M10.75 4.75a.75.75 0 0 0-1.5 0v4.5h-4.5a.75.75 0 0 0 0 1.5h4.5v4.5a.75.75 0 0 0 1.5 0v-4.5h4.5a.75.75 0 0 0 0-1.5h-4.5v-4.5Z" />
                         </svg>
                         {/* <!-- Collapse icon, show/hide based on section open state. --> */}
                         <svg
                             class={` size-5 ${signal.value ? "block" : "hidden"} `} viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon"
-                            onClick$={() => signal.value = false}
+
                         >
                             <path fill-rule="evenodd" d="M4 10a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H4.75A.75.75 0 0 1 4 10Z" clip-rule="evenodd" />
                         </svg>
@@ -166,43 +170,51 @@ const FilterCreate = component$<FilterCreateProps>(({ title, itemList, signal, f
             {/* <!-- Filter section, show/hide based on section state. --> */}
             <div class={` pt-6 ${signal.value ? " visible opacity-100 block" : "invisible opacity-0 hidden"} `} id="filter-section-0">
                 <div class="flex px-1 py-3 overflow-hidden max-w-md mx-auto font-[sans-serif]">
-                    <input type="text" placeholder="Search..." class="w-full outline-none bg-transparent text-gray-600 text-sm" />
+                    <input type="text" placeholder="Search items" class="w-full outline-none bg-transparent text-gray-600 text-sm"
+                        onInput$={(event) => {
+                            searchFilterItem.items = itemList.filter((item) => item.toLowerCase().includes((event.target as HTMLInputElement).value.toLowerCase()))
+
+                        }}
+                    />
                 </div>
                 <div class="space-y-4">
                     {
-                        itemList.map((item, index) => (
+                        searchFilterItem.items.map((item, index) => (
 
-                            <div key={index} class="flex gap-3">
+                            <div key={index} class="flex gap-3 cursor-pointer"
+                            onClick$={() => {
+
+                                isChecked.checkBox[index] = !isChecked.checkBox[index]
+                                if (isChecked.checkBox[index]) {
+                                    filterItems.push(item);
+
+                                }
+                                else {
+                                    const indexRemove = filterItems.indexOf(item);
+                                    filterItems.splice(indexRemove, 1)
+
+                                }
+                                // console.log("before products : ", filterProducts.products);
+                                filterProducts.products = [...allProductsFilter(storeProducts.products, filterItemOptions)];
+                                // console.log("after products : ", filterProducts.products);
+
+
+                            }}
+                            >
                                 <div class="flex h-5 shrink-0 items-center">
-                                    <div class="group grid size-4 grid-cols-1">
+                                    <div class="group grid size-4 grid-cols-1 cursor-pointer">
                                         <input
-                                            onClick$={() => {
-
-
-                                                isChecked.value[index] = !isChecked.value[index]
-                                                if (isChecked.value[index]) {
-                                                    filterItems.push(item);
-
-                                                }
-                                                else {
-                                                    const indexRemove = filterItems.indexOf(item);
-                                                    filterItems.splice(indexRemove, 1)
-
-                                                }
-                                                console.log("before products : ", filterProducts.products);
-                                                filterProducts.products = [...allProductsFilter(storeProducts.products, filterItemOptions)];
-                                                console.log("after products : ", filterProducts.products);
-
-
-                                            }}
-                                            id="filter-category-2" name="category[]" checked={isChecked.value[index]} type="checkbox" class="col-start-1 row-start-1 appearance-none rounded-sm border border-gray-300 bg-white checked:border-indigo-600 checked:bg-indigo-600 indeterminate:border-indigo-600 indeterminate:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto" />
+                                            type="checkbox" 
+                                            checked={isChecked.checkBox[index]}
+                                             class={` col-start-1 row-start-1 appearance-none rounded-sm border  checked:border-indigo-600 checked:bg-indigo-600 ${ isChecked.checkBox[index] ? "border-indigo-600 bg-indigo-600" : 'bg-white border-gray-300 ' }  focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto `} 
+                                        />
                                         <svg class="pointer-events-none col-start-1 row-start-1 size-3.5 self-center justify-self-center stroke-white group-has-disabled:stroke-gray-950/25" viewBox="0 0 14 14" fill="none">
                                             <path class="opacity-0 group-has-checked:opacity-100" d="M3 8L6 11L11 3.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                             <path class="opacity-0 group-has-indeterminate:opacity-100" d="M3 7H11" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                         </svg>
                                     </div>
                                 </div>
-                                <label for="filter-category-2" class="text-sm text-gray-600">{item}</label>
+                                <label  class="text-sm text-gray-600">{item}</label>
                             </div>
                         ))
                     }

@@ -354,14 +354,17 @@ const FilterProducts = component$(() => {
 
 
     // const brandsList = ['Samsung', 'Apple', 'Xiaomi', 'OnePlus', 'Google', 'Oppo', 'Sony', 'Realme', 'Vivo', 'Infinix', 'Poco', 'Huawei', 'Honor', 'Asus', 'Motorola', 'Nokia', 'LG', 'Lenovo']
-    
+    const ramList = ['12GB', '6GB', '8GB', '16GB', '4GB', '3GB'];
     const regionList = ['us', 'china', 'uk', 'singapur', 'india'];
     const displayTypeList = ['AMOLED', 'OLED', 'Fluid AMOLED', 'LTPO OLED', 'Dynamic AMOLED', 'Super AMOLED', 'LCD', 'IPS LCD', 'P-OLED'];
     const shapeList = ['Rectangle', 'Foldable'];
-    const ramList = ['12GB', '6GB', '8GB', '16GB', '4GB', '3GB'];
     const storageList = ['256GB', '128GB', '512GB', '64GB'];
     const chipsetList = ['Exynos 2200', 'A17 Bionic', 'Snapdragon 8 Gen 2', 'Tensor G3', 'Exynos 990', 'Snapdragon 8 Gen 1', 'Dimensity 9200', 'MediaTek Dimensity 1080', 'Dimensity 920', 'MediaTek Dimensity 920', 'Snapdragon 695', 'Kirin 9000', 'Dimensity 1300', 'Snapdragon 8+ Gen 1', 'Dimensity 8100', 'Snapdragon 870', 'A15 Bionic', 'Snapdragon 888', 'Snapdragon 680', 'Dimensity 900', 'Unisoc T616', 'Exynos 1380', 'Snapdragon 778G', 'Snapdragon 4 Gen 1', 'Exynos 1280', 'Snapdragon 480 5G', 'Snapdragon 778G+', 'Snapdragon 765G', 'Tensor', 'MediaTek Helio G37', 'Snapdragon 888+'];
     const operatingSystemList = ['Android 14', 'iOS 17', 'MIUI 14', 'OxygenOS 13', 'Android 11', 'ColorOS 12', 'Android 12', 'Realme UI 3.0', 'Funtouch OS 13', 'MIUI 13', 'XOS 12', 'HarmonyOS 2', 'Magic UI 7.0', 'Funtouch OS 12', 'Android 13', 'Realme UI 4.0', 'ColorOS 12.1', 'iOS 16', 'MIUI 12.5', 'Realme UI 2.0', 'iOS 15', 'ColorOS 11', 'HarmonyOS 3', 'Android 10'];
+    
+    const allFilterItems = {ram: ramList, storage: storageList, displayType: displayTypeList, region: regionList,
+        shape: shapeList, chipset: chipsetList, operatingSystem: operatingSystemList
+    };
 
     const storeProducts = useStore<{ products: ProductFieldType[] }>({ products: [] })
     // const filterProducts = useStore<{ products: ProductFieldType[] }>({ products: [] })
@@ -435,13 +438,13 @@ const FilterProducts = component$(() => {
                         {/* <!-- Filters --> */}
                         <div class="mt-4 border-t border-gray-200">
                             <FilterSidebarMinMax />
-                            <FilterSidebarCreate title="Ram" itemList={ramList} signal={ramSignal} filterItems={filterItems.ram} />
-                            <FilterSidebarCreate title="Storage" itemList={storageList} signal={storageSignal} filterItems={filterItems.storage} />
-                            <FilterSidebarCreate title="Display Type" itemList={displayTypeList} signal={displayTypeSignal} filterItems={filterItems.displayType} />
-                            <FilterSidebarCreate title="Shape" itemList={shapeList} signal={shapeSignal} filterItems={filterItems.shape} />
-                            <FilterSidebarCreate title="Region" itemList={regionList} signal={regionSignal} filterItems={filterItems.region} />
-                            <FilterSidebarCreate title="Chipset" itemList={chipsetList} signal={chipsetSignal} filterItems={filterItems.ram} />
-                            <FilterSidebarCreate title="Operating System" itemList={operatingSystemList} signal={operatingSystemSignal} filterItems={filterItems.operatingSystem} />
+                            <FilterSidebarCreate title="Ram" itemList={allFilterItems.ram} signal={ramSignal} filterItems={filterItems.ram} />
+                            <FilterSidebarCreate title="Storage" itemList={allFilterItems.storage} signal={storageSignal} filterItems={filterItems.storage} />
+                            <FilterSidebarCreate title="Display Type" itemList={allFilterItems.displayType} signal={displayTypeSignal} filterItems={filterItems.displayType} />
+                            <FilterSidebarCreate title="Shape" itemList={allFilterItems.shape} signal={shapeSignal} filterItems={filterItems.shape} />
+                            <FilterSidebarCreate title="Region" itemList={allFilterItems.region} signal={regionSignal} filterItems={filterItems.region} />
+                            <FilterSidebarCreate title="Chipset" itemList={allFilterItems.chipset} signal={chipsetSignal} filterItems={filterItems.ram} />
+                            <FilterSidebarCreate title="Operating System" itemList={allFilterItems.operatingSystem} signal={operatingSystemSignal} filterItems={filterItems.operatingSystem} />
 
                         </div>
                     </div>
@@ -509,13 +512,13 @@ const FilterProducts = component$(() => {
 
                         <div class=" bg-white hidden p-3 lg:block">
                             <FilterMinMax />
-                            <FilterCreate title="Ram" itemList={ramList} signal={ramSignal} filterItems={filterItems.ram} />
-                            <FilterCreate title="Storage" itemList={storageList} signal={storageSignal} filterItems={filterItems.storage} />
-                            <FilterCreate title="Display Type" itemList={displayTypeList} signal={displayTypeSignal} filterItems={filterItems.displayType} />
-                            <FilterCreate title="Shape" itemList={shapeList} signal={shapeSignal} filterItems={filterItems.shape} />
-                            <FilterCreate title="Region" itemList={regionList} signal={regionSignal} filterItems={filterItems.region} />
-                            <FilterCreate title="Chipset" itemList={chipsetList} signal={chipsetSignal} filterItems={filterItems.ram} />
-                            <FilterCreate title="Operating System" itemList={operatingSystemList} signal={operatingSystemSignal} filterItems={filterItems.operatingSystem} />
+                            <FilterCreate title="Ram" itemList={allFilterItems.ram} signal={ramSignal} filterItems={filterItems.ram} />
+                            <FilterCreate title="Storage" itemList={allFilterItems.storage} signal={storageSignal} filterItems={filterItems.storage} />
+                            <FilterCreate title="Display Type" itemList={allFilterItems.displayType} signal={displayTypeSignal} filterItems={filterItems.displayType} />
+                            <FilterCreate title="Shape" itemList={allFilterItems.shape} signal={shapeSignal} filterItems={filterItems.shape} />
+                            <FilterCreate title="Region" itemList={allFilterItems.region} signal={regionSignal} filterItems={filterItems.region} />
+                            <FilterCreate title="Chipset" itemList={allFilterItems.chipset} signal={chipsetSignal} filterItems={filterItems.ram} />
+                            <FilterCreate title="Operating System" itemList={allFilterItems.operatingSystem} signal={operatingSystemSignal} filterItems={filterItems.operatingSystem} />
 
 
 
