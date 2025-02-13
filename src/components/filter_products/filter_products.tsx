@@ -409,7 +409,8 @@ const FilterProducts = component$(() => {
     );
 
     return (
-        <div class="bg-[#EDF2F6] max-w-[1320px] mx-auto">
+        // 1320px
+        <div class="bg-[#EDF2F6] max-w-[1440px] mx-auto pt-[164px]">
             <div class={` ${closeMenu.value ? "hidden" : "block"} `}>
                 {/* filter start */}
                 {/* <div class="fixed inset-0 bg-black/25" aria-hidden="true"></div> */}
